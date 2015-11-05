@@ -20,6 +20,8 @@ script:
  - autoreconf -i
  - ./configure
  - make
+ - cd regression-tests
+ - ./runtests
  - git status
  - git status | grep -q clean
 notifications:
