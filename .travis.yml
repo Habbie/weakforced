@@ -17,6 +17,7 @@ addons:
       - debian-sid
 before_script:
 script:
+ - dpkg -L python-virtualenv
  - export CC='gcc-5' CXX='g++-5'
  - autoreconf -i
  - ./configure
