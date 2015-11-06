@@ -18,10 +18,12 @@ before_script:
  - dpkg-deb -x libsodium13_1.0.3-1_amd64.deb libsodium
  - dpkg-deb -x libsodium-dev_1.0.3-1_amd64.deb libsodium
  - sed -i -e "s@/usr@$(pwd)/libsodium/usr@" libsodium/usr/lib/x86_64-linux-gnu/pkgconfig/libsodium.pc
+ - export PKG_CONFIG_PATH=$(pwd)/libsodium/usr/lib/x86_64-linux-gnu/pkgconfig
+ - export LD_LIBRARY_PATH=$(pwd)/libsodium/usr/lib/x86_64-linux-gnu
 script:
  - export CC='gcc-5' CXX='g++-5'
  - autoreconf -i
- - PKG_CONFIG_PATH=$(pwd)/libsodium/usr/lib/x86_64-linux-gnu/pkgconfig ./configure
+ - ./configure
  - make
  - cd regression-tests
  - ./runtests
