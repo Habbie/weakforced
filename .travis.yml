@@ -27,7 +27,7 @@ script:
  - export CC='gcc-5' CXX='g++-5'
  - autoreconf -i
  - ./configure
- - make
+ - make V=1
  - cd regression-tests
  - ./runtests
  - git status
